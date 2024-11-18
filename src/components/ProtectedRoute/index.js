@@ -6,9 +6,9 @@ const ProtectedRoute=()=>{
     const cookieToken= Cookies.get('jwtToken')
     if (cookieToken === undefined){
         return (<LoginForm />)
-    }else{
-        return (<MoneyManager/>)
     }
+    return (<MoneyManager/>)
+    
 }
 
 export default ProtectedRoute

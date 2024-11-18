@@ -20,6 +20,8 @@ const LoginForm=()=>{
     const [errormsg, setErrmsg]= useState('')
     const [username, setusername]= useState('')
     const [userpassword, setUserPassword]= useState('')
+    const [loginError, setloginError]= useState('')
+    const [isloginError, setisloErr]= useState(false)
 
     const onSigninon=()=>{
         setSignin(false)
@@ -54,8 +56,9 @@ const LoginForm=()=>{
                 body: JSON.stringify(signinData)
             }
             const res = await fetch(url, options)
-            const data= await res.json()
-            console.log(data)
+            if (res.ok){
+                navigate('../login')
+            }
         }
         else {
             setSigninError(true)
@@ -76,10 +79,17 @@ const LoginForm=()=>{
             body: JSON.stringify(userdetails),
         }
         const response= await fetch(url, options)
-        const data= await response.json()
-        const {jwtToken}= data
-        Cookies.set('jwtToken', jwtToken, {expires: 30})
-        navigate('/')
+        
+        if (response.ok === true){
+            const data= await response.json()
+            const {jwtToken}= data
+            Cookies.set('jwtToken', jwtToken, {expires: 30})
+            navigate('/')
+        }else{
+            setisloErr(true)
+            setloginError('**invalid Username or password')
+        }
+        
     }
     
     
@@ -126,6 +136,7 @@ const LoginForm=()=>{
                                     onChange={(e)=> setUserPassword(e.target.value)} className='log-inp' placeholder='Enter password'></input>
                                 </div>
                                 <button type='submit' className='btn-lo'>Login</button>
+                                {isloginError && <p className='error'>{loginError}</p>}
                             </form> 
             }
             

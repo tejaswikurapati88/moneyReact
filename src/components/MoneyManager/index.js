@@ -28,7 +28,6 @@ class MoneyManager extends Component {
     expenseAmt: 0,
   }
   
-
   selectedOption = event => {
     this.setState({optionId: event.target.value})
   }

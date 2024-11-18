@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const NavBar=()=>{
     const navigate= useNavigate()
     const onLogout=()=>{
-        Cookies.remove('jwtToken')
+        Cookies.remove('jwtToken', { path: '/' })
         navigate('/protect')
     }
     return(
