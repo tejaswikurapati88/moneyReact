@@ -1,0 +1,130 @@
+.login-bg-container{
+    display: flex;
+    align-items: center;
+    background-color: rgb(56, 47, 47);
+    height: 100vh;
+    width: 100%;
+    color: #ffffff;
+    font-family: 'Roboto';
+    
+    flex-direction: column;
+}
+.login-heading{
+    margin-bottom: 50px;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    top: 0;
+    margin-bottom: 50px;
+    align-self: stretch;
+    border-bottom: 1px solid lightslategray;
+}
+.log-head-logo{
+font-family: 'nico moji';
+}
+.signinbtn{
+    outline: none;
+    cursor: pointer;
+    width: 90px;
+    height: 50px;
+    font-size: 15px;
+    background-color: rgb(73, 63, 63);
+    padding: 10px;
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    color: antiquewhite;
+    
+}
+/*.cont-lo{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}*/
+.login-op-cont{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.log-para{
+    font-size: 13px;
+    align-self: flex-start;
+}
+.logi-btn{
+    width: 50%;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+    height: 60px;
+    font-size: 20px;
+    color: antiquewhite;
+    cursor: pointer;
+    outline: none;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid lightslategray;
+    border-radius: 10px;
+    padding: 15px;
+    width: 30%;
+    margin-top: 30px;
+}
+.login-heading{
+    align-self: center;
+}
+.username-cont{
+    align-self: stretch;
+    border: 0.5px solid lightslategray;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+.label{
+    margin: 5px;
+}
+.log-inp{
+    width: 200px;
+    border: 0.5px solid lightslategrey;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color:rgb(75, 64, 64);
+    outline: none;
+    color: antiquewhite;
+}
+.btn-lo{
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+    color: antiquewhite;
+    background-color: rgb(180, 69, 69);
+    height: 40px;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.error{
+    font-size: 12px;
+    color:rgb(190, 18, 53);
+    margin-left: 20px;
+    font-weight: 600;
+}
+@media (max-width: 576px) {
+    .login-form{
+        width: 300px;
+    }
+}

@@ -1,0 +1,15 @@
+.bg-app-nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+    width: 100%;
+}
+.logout-btn{
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Roboto';
+}

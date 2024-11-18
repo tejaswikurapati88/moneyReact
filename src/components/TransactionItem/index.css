@@ -1,0 +1,23 @@
+/* Write your CSS here */
+
+.img-dele {
+    height: 20px;
+  }
+  .text {
+    color: #1e293b;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 15px;
+    margin-left: 10px;
+  }
+  .dele-button {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    border: 0px solid;
+  }
+  .li-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
