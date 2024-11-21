@@ -6,11 +6,11 @@ const NavBar=()=>{
     const navigate= useNavigate()
     const onLogout=()=>{
         Cookies.remove('jwtToken', { path: '/' })
-        navigate('/protect')
+        navigate('/login')
     }
     return(
         <div className="bg-app-nav">
-            <h1>Money Manager</h1>
+            <h1 className='nav-head'>Money Manager</h1>
             <button className='logout-btn' type='button' onClick={onLogout}>Logout</button>
         </div>
     )

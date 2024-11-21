@@ -27,6 +27,17 @@ class MoneyManager extends Component {
     incomeAmt: 0,
     expenseAmt: 0,
   }
+
+  componentDidMount(){
+    const localHistStr= localStorage.getItem('hisList')
+    const localHist= JSON.parse(localHistStr)
+    console.log(localHist)
+    if (localHist === null){
+      this.setState({historyList: []})
+    }else{
+    this.setState({historyList: localHist})}
+    
+  }
   
   selectedOption = event => {
     this.setState({optionId: event.target.value})
@@ -120,6 +131,12 @@ class MoneyManager extends Component {
     balanceAmount = incomeAmount - expensesAmount
 
     return balanceAmount
+  }
+
+  onSave=()=>{
+    const {historyList}= this.state 
+    localStorage.setItem('hisList', JSON.stringify(historyList))
+    console.log(historyList)
   }
 
   render() {
@@ -225,6 +242,7 @@ class MoneyManager extends Component {
             </div>
           </div>
         </div>
+        <button className='button' onClick={this.onSave} type='button'>Save</button>
       </div>
     )
   }
