@@ -46,7 +46,7 @@ const LoginForm=()=>{
             password: typePass
         }
         if (typePass=== retypePass){
-            const url='http://localhost:3000/api/users/signin'
+            const url='https://money-manager-backend-w7d8.onrender.com/api/users/signin'
             const options = {
                 method: 'POST' ,
                 headers: {
@@ -69,7 +69,7 @@ const LoginForm=()=>{
     const onUserLogin= async(event)=>{
         event.preventDefault()
         const userdetails= {username: username, password: userpassword}
-        const url= 'http://localhost:3000/api/users/login'
+        const url= 'https://money-manager-backend-w7d8.onrender.com/api/users/login'
         const options = {
             method: 'POST',
             headers: {

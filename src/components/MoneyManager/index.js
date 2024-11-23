@@ -1,9 +1,11 @@
-import {Component} from 'react'
+import {useState, useEffect} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import MoneyDetails from '../MoneyDetails'
 import TransactionItem from '../TransactionItem'
 import './index.css'
 import NavBar from '../NavBar'
+import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 const transactionTypeOptions = [
   {
@@ -17,43 +19,46 @@ const transactionTypeOptions = [
 ]
 
 // Write your code here
-class MoneyManager extends Component {
-  state = {
-    inpTitle: '',
-    inpAmount: '',
-    optionId: transactionTypeOptions[0].optionId,
-    historyList: [],
-    balance: 0,
-    incomeAmt: 0,
-    expenseAmt: 0,
-  }
+const  MoneyManager =()=> {
 
-  componentDidMount(){
-    const localHistStr= localStorage.getItem('hisList')
-    const localHist= JSON.parse(localHistStr)
-    console.log(localHist)
-    if (localHist === null){
-      this.setState({historyList: []})
-    }else{
-    this.setState({historyList: localHist})}
+  const navigate=useNavigate()
+
+  const [inpTitle, setInpTitle]= useState('')
+  const [inpAmount, setInpAmount]= useState('')
+  const [optionId, setOptId]= useState(transactionTypeOptions[0].optionId)
+  const [historyList, sethistlist]= useState([])
+
+  useEffect(()=>{
     
-  }
+    const cookieStore= Cookies.get('jwtToken')
+    if (cookieStore === undefined){
+      navigate('/login')
+    }
+    const getEffect=()=>{
+      const localHistStr= localStorage.getItem('hisList')
+      const localHist= JSON.parse(localHistStr)
+      if (localHist === null){
+        sethistlist([])
+      }else{
+      sethistlist(localHist)}
+    }
+    getEffect()
+  }, [navigate])
   
-  selectedOption = event => {
-    this.setState({optionId: event.target.value})
+  const selectedOption = event => {
+    setOptId(event.target.value)
   }
 
-  onAmount = event => {
-    this.setState({inpAmount: event.target.value})
+  const onAmount = event => {
+    setInpAmount(event.target.value)
   }
 
-  onTitle = event => {
-    this.setState({inpTitle: event.target.value})
+  const onTitle = event => {
+    setInpTitle(event.target.value)
   }
 
-  addToTransactions = event => {
+  const addToTransactions = event => {
     event.preventDefault()
-    const {inpTitle, inpAmount, optionId} = this.state
     const typeOption = transactionTypeOptions.find(
       eachTransaction => eachTransaction.optionId === optionId,
     )
@@ -65,34 +70,30 @@ class MoneyManager extends Component {
       amount: parseInt(inpAmount),
       type: displayText,
     }
+    console.log(historyList)
+    sethistlist(prevSate => ([...prevSate, newHistory]))
+    /*sethistlist(prevState => ({
+      ...prevState,
+      historyList: [...prevState.historyList, newHistory]
+    }));*/
+    setInpTitle('')
+    setInpAmount('')
+    setOptId(transactionTypeOptions[0].optionId)
+    setlocalstorage()
 
-    this.setState(
-      prevState => ({
-        historyList: [...prevState.historyList, newHistory],
-        inpTitle: '',
-        inpAmount: '',
-        inpOption: transactionTypeOptions[0].optionId,
-      }),
-      this.setlocalstorage(),
-    )
-
-    const storage = localStorage.getItem('historyItems')
-    console.log(storage)
   }
 
-  setlocalstorage = () => {
-    const {historyList} = this.state
+  const setlocalstorage = () => {
     localStorage.setItem('historyItems', historyList)
   }
 
-  deleteItem = id => {
-    this.setState(prevState => ({
-      historyList: prevState.historyList.filter(each => each.id !== id),
-    }))
+  const deleteItem = id => {
+    sethistlist(prevState => ([
+      prevState.filter(each => each.id !== id)]
+    ))
   }
 
-  getExpenses = () => {
-    const {historyList} = this.state
+  const getExpenses = () => {
     let expensesAmount = 0
     historyList.forEach(eachTransaction => {
       if (eachTransaction.type === transactionTypeOptions[1].displayText) {
@@ -102,8 +103,7 @@ class MoneyManager extends Component {
     return expensesAmount
   }
 
-  getIncome = () => {
-    const {historyList} = this.state
+  const getIncome = () => {
     let incomeAmount = 0
     historyList.forEach(eachTransaction => {
       if (eachTransaction.type === transactionTypeOptions[0].displayText) {
@@ -114,8 +114,7 @@ class MoneyManager extends Component {
     return incomeAmount
   }
 
-  getBalance = () => {
-    const {historyList} = this.state
+  const getBalance = () => {
     let balanceAmount = 0
     let incomeAmount = 0
     let expensesAmount = 0
@@ -133,17 +132,13 @@ class MoneyManager extends Component {
     return balanceAmount
   }
 
-  onSave=()=>{
-    const {historyList}= this.state 
+  const onSave=()=>{
     localStorage.setItem('hisList', JSON.stringify(historyList))
-    console.log(historyList)
   }
 
-  render() {
-    const {optionId, inpAmount, inpTitle, historyList} = this.state
-    const balanceAmount = this.getBalance()
-    const incomeAmount = this.getIncome()
-    const expensesAmount = this.getExpenses()
+    const balanceAmount = getBalance()
+    const incomeAmount = getIncome()
+    const expensesAmount = getExpenses()
     return (
       <div className="bg-container">
         <NavBar />
@@ -165,7 +160,7 @@ class MoneyManager extends Component {
           <div className="bottom-cont">
             <div className="inp-details-cont">
               <h1 className="side-heading">Add Transaction</h1>
-              <form onSubmit={this.addToTransactions}>
+              <form onSubmit={addToTransactions}>
                 <div className="cont">
                   <label htmlFor="title" className="label">
                     TITLE
@@ -175,7 +170,7 @@ class MoneyManager extends Component {
                     id="title"
                     type="text"
                     placeholder="TITLE"
-                    onChange={this.onTitle}
+                    onChange={onTitle}
                     value={inpTitle}
                   />
                 </div>
@@ -188,7 +183,7 @@ class MoneyManager extends Component {
                     id="amount"
                     type="text"
                     placeholder="AMOUNT"
-                    onChange={this.onAmount}
+                    onChange={onAmount}
                     value={inpAmount}
                   />
                 </div>
@@ -201,7 +196,7 @@ class MoneyManager extends Component {
                     id="type"
                     type="text"
                     placeholder="AMOUNT"
-                    onChange={this.selectedOption}
+                    onChange={selectedOption}
                     value={optionId}
                   >
                     {transactionTypeOptions.map(eachoption => (
@@ -234,7 +229,7 @@ class MoneyManager extends Component {
                   <TransactionItem
                     transacDetails={eachhis}
                     dataTestId="delete"
-                    deleteItem={this.deleteItem}
+                    deleteItem={deleteItem}
                     key={eachhis.id}
                   />
                 ))}
@@ -242,10 +237,10 @@ class MoneyManager extends Component {
             </div>
           </div>
         </div>
-        <button className='button' onClick={this.onSave} type='button'>Save</button>
+        <button className='button' onClick={onSave} type='button'>Save</button>
       </div>
     )
-  }
+  
 }
 
 export default MoneyManager
