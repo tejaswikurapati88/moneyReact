@@ -15,6 +15,7 @@
     padding: 0px;
     background-color: transparent;
     border: 0px solid;
+    cursor: pointer;
   }
   .li-cont {
     display: flex;

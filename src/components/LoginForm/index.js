@@ -57,7 +57,11 @@ const LoginForm=()=>{
             }
             const res = await fetch(url, options)
             if (res.ok){
-                navigate('../login')
+                setusername('')
+                setUserPassword('')
+                setTypePass('')
+                setTypeUsername('')
+                setSignin(false)
             }
         }
         else {
@@ -81,9 +85,10 @@ const LoginForm=()=>{
         const response= await fetch(url, options)
         
         if (response.ok === true){
+            
             const data= await response.json()
             const {jwtToken}= data
-            Cookies.set('jwtToken', jwtToken, {expires: 30})
+            Cookies.set('jwtToken', `${jwtToken} ${username}`, {expires: 30})
             navigate('/')
         }else{
             setisloErr(true)
@@ -127,12 +132,12 @@ const LoginForm=()=>{
                                 <h1 className='login-heading'>User Login</h1>
                                 <div className='username-cont'>
                                     <label className='label' htmlFor='usernameinp'>Username</label>
-                                    <input type='text' id='usernameinp' defaultValue={username}
+                                    <input type='text' id='usernameinp' value={username}
                                     onChange={(e)=> setusername(e.target.value)} className='log-inp' placeholder='Enter username'></input>
                                 </div>
                                 <div className='username-cont'>
                                     <label className='label' htmlFor='userpassinp'>Password</label>
-                                    <input type='password' id='userpassinp' defaultValue={userpassword}
+                                    <input type='password' id='userpassinp' value={userpassword}
                                     onChange={(e)=> setUserPassword(e.target.value)} className='log-inp' placeholder='Enter password'></input>
                                 </div>
                                 <button type='submit' className='btn-lo'>Login</button>

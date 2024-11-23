@@ -20,17 +20,21 @@ const transactionTypeOptions = [
 
 // Write your code here
 const  MoneyManager =()=> {
-
+  
+  
   const navigate=useNavigate()
 
   const [inpTitle, setInpTitle]= useState('')
   const [inpAmount, setInpAmount]= useState('')
   const [optionId, setOptId]= useState(transactionTypeOptions[0].optionId)
   const [historyList, sethistlist]= useState([])
+  const [name, setName]= useState('')
 
   useEffect(()=>{
     
     const cookieStore= Cookies.get('jwtToken')
+    const namelist= cookieStore.split(' ')[1]
+    setName(namelist)
     if (cookieStore === undefined){
       navigate('/login')
     }
@@ -72,10 +76,6 @@ const  MoneyManager =()=> {
     }
     console.log(historyList)
     sethistlist(prevSate => ([...prevSate, newHistory]))
-    /*sethistlist(prevState => ({
-      ...prevState,
-      historyList: [...prevState.historyList, newHistory]
-    }));*/
     setInpTitle('')
     setInpAmount('')
     setOptId(transactionTypeOptions[0].optionId)
@@ -88,9 +88,8 @@ const  MoneyManager =()=> {
   }
 
   const deleteItem = id => {
-    sethistlist(prevState => ([
-      prevState.filter(each => each.id !== id)]
-    ))
+    const filteredList= historyList.filter(each => each.id !== id)
+    sethistlist(filteredList)
   }
 
   const getExpenses = () => {
@@ -144,7 +143,7 @@ const  MoneyManager =()=> {
         <NavBar />
         <div className="subcont">
           <div className="head-cont">
-            <h1 className="name">Hi, Richard</h1>
+            <h1 className="name">Hi, {name}</h1>
             <p className="welcome-text">
               Welcome back to your <span className="mo-man">Money Manager</span>
             </p>
