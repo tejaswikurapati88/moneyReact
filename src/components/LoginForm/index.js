@@ -56,12 +56,17 @@ const LoginForm=({onName})=>{
                 body: JSON.stringify(signinData)
             }
             const res = await fetch(url, options)
+            console.log(res)
             if (res.ok){
                 setusername('')
                 setUserPassword('')
                 setTypePass('')
                 setTypeUsername('')
                 setSignin(false)
+                
+            }else{
+                setSigninError(true)
+                setErrmsg('**Username already Exists, Please Login')
             }
         }
         else {
