@@ -1,0 +1,20 @@
+.footer-bg-contianer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Roboto';
+    margin-top:20px;
+}
+.myname{
+    color: rgb(94, 255, 0);
+    font-weight: bold;
+}
+.icon{
+    font-size: 40px;
+    margin: 10px;
+    color: #000;
+}
+.dev{
+    font-size: 25px;
+}

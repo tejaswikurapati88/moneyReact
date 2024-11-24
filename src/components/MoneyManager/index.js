@@ -6,6 +6,7 @@ import './index.css'
 import NavBar from '../NavBar'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import Footer from '../Footer'
 
 const transactionTypeOptions = [
   {
@@ -237,6 +238,7 @@ const  MoneyManager =()=> {
           </div>
         </div>
         <button className='button' onClick={onSave} type='button'>Save</button>
+        <Footer />
       </div>
     )
   

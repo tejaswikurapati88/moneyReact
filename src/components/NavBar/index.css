@@ -3,6 +3,7 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    margin-top: 15px;
 }
 .logout-btn{
     padding: 10px;
@@ -18,7 +19,7 @@
 }
 .nav-head{
     font-weight: normal;
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Ga Maamli';
     
 }
