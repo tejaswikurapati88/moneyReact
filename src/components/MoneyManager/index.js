@@ -33,8 +33,14 @@ const  MoneyManager =()=> {
   useEffect(()=>{
     
     const cookieStore= Cookies.get('jwtToken')
-    const namelist= cookieStore.split(' ')[1]
-    setName(namelist)
+    let name=''
+    for (var i=0; i<cookieStore.length; i++){
+      if (cookieStore[i]===' '){
+          name=(cookieStore.slice(i, cookieStore.length))
+      }
+      
+    }
+    setName(name)
     if (cookieStore === undefined){
       navigate('/login')
     }
@@ -74,7 +80,6 @@ const  MoneyManager =()=> {
       amount: parseInt(inpAmount),
       type: displayText,
     }
-    console.log(historyList)
     sethistlist(prevSate => ([...prevSate, newHistory]))
     setInpTitle('')
     setInpAmount('')
@@ -213,7 +218,7 @@ const  MoneyManager =()=> {
                 </button>
               </form>
             </div>
-            <div className="inp-details-cont hst-con">
+            <div className="hst-con inp-details-cont">
               <ul>
                 <li>
                   <h1 className="side-heading">History</h1>

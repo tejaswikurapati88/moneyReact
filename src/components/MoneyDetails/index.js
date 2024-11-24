@@ -14,9 +14,9 @@ const MoneyDetails =(props)=> {
             />
           </div>
           <div className="price-cont">
-            <p className="side-name">Your Balance</p>
+            <p className="side-name"><span className='your'>Your</span> Balance</p>
             <p className="amount-in-rs" data-testid="balanceAmount">
-              Rs {bala}
+              <span>Rs</span> {bala}
             </p>
           </div>
         </div>
@@ -27,9 +27,9 @@ const MoneyDetails =(props)=> {
             alt="income"
           />
           <div className="price-cont">
-            <p className="side-name">Your Income</p>
+            <p className="side-name"><span className='your'>Your</span> Income</p>
             <p className="amount-in-rs" data-testid="incomeAmount">
-              Rs {inco}
+            <span>Rs</span> {inco}
             </p>
           </div>
         </div>
@@ -40,9 +40,9 @@ const MoneyDetails =(props)=> {
             alt="expenses"
           />
           <div className="price-cont">
-            <p className="side-name">Your Expenses</p>
+            <p className="side-name"><span className='your'>Your</span> Expenses</p>
             <p className="amount-in-rs" data-testid="expensesAmount">
-              Rs {exp}
+            <span>Rs</span> {exp}
             </p>
           </div>
         </div>

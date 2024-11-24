@@ -12,6 +12,7 @@
     width: 65%;
     padding: 10px;
   }
+  
   .head-cont {
     background-image: url('https://assets.ccbp.in/frontend/react-js/money-manager/money-manager-bg.png');
     background-size: cover;
@@ -19,6 +20,8 @@
     font-family: 'Roboto';
     padding-left: 55px;
     margin-top: 20px;
+    border: none;
+    border-radius: 15px;
   }
   .name {
     color: #475569;
@@ -29,21 +32,14 @@
     font-weight: 500;
     font-size: 17px;
   }
+ 
   .mo-man {
     color: #0b69ff;
   }
   .details-cont {
     display: flex;
   }
-  .inp-details-cont {
-    padding: 20px;
-    border: 1px solid #cbd5e1;
-    font-family: 'Roboto';
-    border-radius: 10px;
-    width: 350px;
-    padding-right: 40px;
-    padding-left: 40px;
-  }
+  
   .side-heading {
     font-weight: 500;
     color: #1e293b;
@@ -98,9 +94,30 @@
     list-style-type: none;
   }
   .hst-con {
-    width: 460px;
+    width: 50% !important;
     padding-top: 0px;
     padding: 10px;
+  }
+  
+  .header-dele {
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    display: table-caption;
+  }
+  ul {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .inp-details-cont {
+    padding: 20px;
+    border: 1px solid #cbd5e1;
+    font-family: 'Roboto';
+    border-radius: 10px;
+    width: 350px;
+    padding-right: 40px;
+    padding-left: 40px;
   }
   .header {
     margin-right: 45px;
@@ -112,14 +129,58 @@
     font-weight: 500;
     display: table-caption;
   }
-  .header-dele {
-    margin-right: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    display: table-caption;
+  ul{
+    padding-inline-start: 0px;
   }
-  ul {
-    align-items: flex-start;
-    text-align: left;
+  @media (max-width: 576px) {
+    .header{
+      margin-right: 0px;
+      margin-left: 5px;
+    }
+    .hst-con{
+      margin-top: 10px;
+      width: 100% !important;
+    }
+    .text{
+      font-size: 12px;
+    }
+    .inp-details-cont{
+      width: 100%;
+      padding: 10px;
+    }
+    .li-cont{
+      width: 250px;
+    }
+    ul{
+      padding-inline-start: 0px;
+    }
+    
+    
+    .side-heading{
+      font-size: 25px;
+    }
+    .subcont{
+      width: 95%;
+      padding-top: 0px;
+    }
+    .head-cont{
+      width: 100%;
+      background-size: cover;
+      padding: 10px;
+      border: none;
+      border-radius: 15px;
+    }
+    .name{
+      font-size: 20px;
+    }
+    .welcome-text{
+      font-size: 12px;
+    }
+    .bottom-cont{
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+    }
+    
+    
   }

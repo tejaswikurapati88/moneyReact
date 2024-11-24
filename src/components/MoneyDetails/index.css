@@ -53,3 +53,27 @@
     margin-top: 0px;
     color: #475569;
   }
+  @media (max-width:576px) {
+    .img{
+      height: 50px;
+    }
+    .bor-con{
+      padding: 5px;
+      flex-direction: column;
+      
+    }
+    .side-name{
+      font-size: 13px;
+      text-align: center;
+    }
+    .amount-in-rs{
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    span{
+      font-size: 12px;
+    }
+    .your{
+      display: none;
+    }
+  }
