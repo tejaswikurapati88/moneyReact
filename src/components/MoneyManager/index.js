@@ -33,14 +33,9 @@ const  MoneyManager =()=> {
   useEffect(()=>{
     
     const cookieStore= Cookies.get('jwtToken')
-    let name=''
-    for (var i=0; i<cookieStore.length; i++){
-      if (cookieStore[i]===' '){
-          name=(cookieStore.slice(i, cookieStore.length))
-      }
-      
-    }
-    setName(name)
+    const nameLocal= localStorage.getItem('name')
+    console.log(nameLocal)
+    setName(nameLocal)
     if (cookieStore === undefined){
       navigate('/login')
     }

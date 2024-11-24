@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import {useNavigate} from 'react-router-dom'
 import {v4 as uuidv4} from 'uuid'
 
-const LoginForm=()=>{
+const LoginForm=({onName})=>{
     const navigate= useNavigate()
     useEffect(()=>{
         const jwtTokenCookie= Cookies.get('jwtToken')
@@ -85,7 +85,7 @@ const LoginForm=()=>{
         const response= await fetch(url, options)
         
         if (response.ok === true){
-            
+            onName(username)
             const data= await response.json()
             const {jwtToken}= data
             Cookies.set('jwtToken', `${jwtToken} ${username}`, {expires: 30})
