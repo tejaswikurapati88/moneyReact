@@ -125,7 +125,24 @@ font-family: 'nico moji';
 }
 @media (max-width: 576px) {
     .login-form{
-        width: 300px;
+        width: 90%;
+    }
+    .log-head-logo{
+        font-size: 20px;
+    }
+    .signinbtn{
+        font-size: 15px;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 80px;
+        height: 40px;
+    }
+    .login-heading{
+        font-size: 25px;
+    }
+    .login-heading{
+        margin-bottom: 25px;
     }
     
 }
