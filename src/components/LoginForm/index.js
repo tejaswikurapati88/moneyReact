@@ -104,13 +104,13 @@ const LoginForm=({onName})=>{
                 <h1 className='log-head-logo'>Money Manager</h1>
                 {
                 isSignin? <button type='button' onClick={onSigninon} className='signinbtn'>Login</button>
-                    :     <button type='button' onClick={onLoginon} className='signinbtn'>Signin</button>
+                    :     <button type='button' onClick={onLoginon} className='signinbtn'>SignUp</button>
                 }
                 
             </div>
             {isSignin? 
                     <form className='login-form' onSubmit={onSigninSubmition}>
-                        <h1 className='login-heading'>User SignIn</h1>
+                        <h1 className='login-heading'>User SignUp</h1>
                         <div className='username-cont'>
                             <label className='label' htmlFor='usernameinp'>Username</label>
                             <input type='text' id='usernameinp' onChange={onTypeUsername} value={typeUsername} 
